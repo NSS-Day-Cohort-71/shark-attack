@@ -1,0 +1,90 @@
+[
+    {
+      "model": "sharkapi.review",
+      "pk": 1,
+      "fields": {
+        "product": 1,
+        "user": 1,
+        "rating": 5,
+        "comment": "The SharkAway Spray works great! I feel much safer in the water now.",
+        "created_at": "2024-09-13T10:00:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.review",
+      "pk": 2,
+      "fields": {
+        "product": 2,
+        "user": 2,
+        "rating": 4,
+        "comment": "The SharkProof Wetsuit is very comfortable and gives me peace of mind. A bit pricey though.",
+        "created_at": "2024-09-14T11:30:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.review",
+      "pk": 3,
+      "fields": {
+        "product": 3,
+        "user": 1,
+        "rating": 5,
+        "comment": "SharkAlert Sonar is a game-changer! It's easy to use and very effective.",
+        "created_at": "2024-09-15T09:45:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.review",
+      "pk": 4,
+      "fields": {
+        "product": 4,
+        "user": 2,
+        "rating": 5,
+        "comment": "The SharkSafe Cage is top-notch. Feels very sturdy and secure.",
+        "created_at": "2024-09-16T14:20:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.review",
+      "pk": 5,
+      "fields": {
+        "product": 5,
+        "user": 1,
+        "rating": 4,
+        "comment": "The Shark First Aid Kit is comprehensive. Hope I never have to use it, but glad to have it just in case.",
+        "created_at": "2024-09-17T16:10:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.review",
+      "pk": 6,
+      "fields": {
+        "product": 1,
+        "user": 2,
+        "rating": 4,
+        "comment": "SharkAway Spray is effective, but the smell is quite strong. Works well otherwise.",
+        "created_at": "2024-09-18T13:55:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.review",
+      "pk": 7,
+      "fields": {
+        "product": 2,
+        "user": 1,
+        "rating": 5,
+        "comment": "This wetsuit is amazing! Feels like I'm wearing armor in the water.",
+        "created_at": "2024-09-19T10:30:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.review",
+      "pk": 8,
+      "fields": {
+        "product": 3,
+        "user": 2,
+        "rating": 3,
+        "comment": "SharkAlert Sonar works, but battery life could be better. Needs improvement.",
+        "created_at": "2024-09-20T12:15:00Z"
+      }
+    }
+  ]

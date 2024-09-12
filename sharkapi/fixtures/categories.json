@@ -1,0 +1,42 @@
+[
+    {
+      "model": "sharkapi.category",
+      "pk": 1,
+      "fields": {
+        "name": "Repellents",
+        "description": "Chemical and electronic shark repellents"
+      }
+    },
+    {
+      "model": "sharkapi.category",
+      "pk": 2,
+      "fields": {
+        "name": "Protective Gear",
+        "description": "Wetsuits and other protective clothing"
+      }
+    },
+    {
+      "model": "sharkapi.category",
+      "pk": 3,
+      "fields": {
+        "name": "Safety Devices",
+        "description": "Shark deterrent devices and alarms"
+      }
+    },
+    {
+      "model": "sharkapi.category",
+      "pk": 4,
+      "fields": {
+        "name": "First Aid",
+        "description": "Emergency first aid kits and supplies"
+      }
+    },
+    {
+      "model": "sharkapi.category",
+      "pk": 5,
+      "fields": {
+        "name": "Educational Materials",
+        "description": "Books and guides about shark safety"
+      }
+    }
+  ]

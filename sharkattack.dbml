@@ -1,0 +1,58 @@
+// User table
+Table User {
+  id integer [primary key]
+  username varchar [unique, not null]
+  email varchar [unique, not null]
+  password varchar [not null]
+  first_name varchar
+  last_name varchar
+  is_active boolean [default: true]
+  created_at timestamp [default: `now()`]
+}
+
+// Product table
+Table Product {
+  id integer [primary key]
+  name varchar [not null]
+  description text
+  price decimal(10,2) [not null]
+  stock integer [not null]
+  category_id integer [ref: > Category.id]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+// Category table
+Table Category {
+  id integer [primary key]
+  name varchar [not null]
+  description text
+}
+
+// Order table
+Table Order {
+  id integer [primary key]
+  user_id integer [ref: > User.id]
+  status varchar [not null]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+// OrderItem table
+Table OrderItem {
+  id integer [primary key]
+  order_id integer [ref: > Order.id]
+  product_id integer [ref: > Product.id]
+  quantity integer [not null]
+  price_at_time decimal(10,2) [not null]
+}
+
+// Review table
+Table Review {
+  id integer [primary key]
+  product_id integer [ref: > Product.id]
+  user_id integer [ref: > User.id]
+  rating integer [not null]
+  comment text
+  created_at timestamp [default: `now()`]
+}

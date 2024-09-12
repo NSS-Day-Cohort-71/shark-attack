@@ -1,0 +1,67 @@
+[
+    {
+      "model": "sharkapi.product",
+      "pk": 1,
+      "fields": {
+        "name": "SharkAway Spray",
+        "description": "Powerful shark repellent spray",
+        "price": "29.99",
+        "stock": 100,
+        "category": 1,
+        "created_at": "2024-09-12T10:00:00Z",
+        "updated_at": "2024-09-12T10:00:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.product",
+      "pk": 2,
+      "fields": {
+        "name": "SharkProof Wetsuit",
+        "description": "Cut-resistant full-body wetsuit",
+        "price": "299.99",
+        "stock": 50,
+        "category": 2,
+        "created_at": "2024-09-12T10:01:00Z",
+        "updated_at": "2024-09-12T10:01:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.product",
+      "pk": 3,
+      "fields": {
+        "name": "SharkAlert Sonar",
+        "description": "Wearable sonar shark detection device",
+        "price": "199.99",
+        "stock": 75,
+        "category": 3,
+        "created_at": "2024-09-12T10:02:00Z",
+        "updated_at": "2024-09-12T10:02:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.product",
+      "pk": 4,
+      "fields": {
+        "name": "SharkSafe Cage",
+        "description": "Portable shark cage for divers",
+        "price": "1999.99",
+        "stock": 10,
+        "category": 2,
+        "created_at": "2024-09-12T10:03:00Z",
+        "updated_at": "2024-09-12T10:03:00Z"
+      }
+    },
+    {
+      "model": "sharkapi.product",
+      "pk": 5,
+      "fields": {
+        "name": "Shark First Aid Kit",
+        "description": "Specialized first aid kit for shark-related injuries",
+        "price": "89.99",
+        "stock": 200,
+        "category": 4,
+        "created_at": "2024-09-12T10:04:00Z",
+        "updated_at": "2024-09-12T10:04:00Z"
+      }
+    }
+  ]

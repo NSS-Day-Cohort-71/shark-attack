@@ -1,0 +1,62 @@
+[
+    {
+      "model": "sharkapi.orderitem",
+      "pk": 1,
+      "fields": {
+        "order": 1,
+        "product": 1,
+        "quantity": 1,
+        "price_at_time": "29.99"
+      }
+    },
+    {
+      "model": "sharkapi.orderitem",
+      "pk": 2,
+      "fields": {
+        "order": 1,
+        "product": 2,
+        "quantity": 1,
+        "price_at_time": "299.99"
+      }
+    },
+    {
+      "model": "sharkapi.orderitem",
+      "pk": 3,
+      "fields": {
+        "order": 2,
+        "product": 2,
+        "quantity": 1,
+        "price_at_time": "299.99"
+      }
+    },
+    {
+      "model": "sharkapi.orderitem",
+      "pk": 4,
+      "fields": {
+        "order": 2,
+        "product": 3,
+        "quantity": 1,
+        "price_at_time": "199.99"
+      }
+    },
+    {
+      "model": "sharkapi.orderitem",
+      "pk": 5,
+      "fields": {
+        "order": 3,
+        "product": 4,
+        "quantity": 1,
+        "price_at_time": "1999.99"
+      }
+    },
+    {
+      "model": "sharkapi.orderitem",
+      "pk": 6,
+      "fields": {
+        "order": 3,
+        "product": 5,
+        "quantity": 1,
+        "price_at_time": "89.99"
+      }
+    }
+  ]
