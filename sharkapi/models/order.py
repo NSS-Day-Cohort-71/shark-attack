@@ -15,3 +15,4 @@ class Order(models.Model):
     carrier = models.CharField(max_length=100, default="USPS")
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
+    products = models.ManyToManyField("Product", through="OrderItem", related_name="orders")

@@ -1,5 +1,23 @@
 {
-    "python.linting.pylintArgs": [
-        "--load-plugins=pylint_django"
+    "pylint.args": [
+        "--load-plugins=pylint_django",
+        "--django-settings-module=sharkproject.settings"
     ],
+    "cSpell.words": [
+        "allauth",
+        "authtoken",
+        "corsheaders",
+        "extraversion",
+        "nssuser",
+        "socialaccount",
+        "viewsets"
+    ],
+    "files.associations": {
+        "*.env": "env",
+        "*.env.template": "env",
+    },
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "dbmlERDPreviewer.preferredTheme": "dark"
 }
