@@ -8,28 +8,49 @@ from rest_framework import status
 from sharkapi.models import Product, OrderItem, Order, Category
 
 class CartViewSet(viewsets.ViewSet):
-    def list(self, request):
-        queryset = Product.objects.all()
-        serializer = ProductSerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    def delete(self, request, pk=None):
+        product_to_remove_from_cart = request.data.get("product_id", None)
 
-    def retrieve(self, request, pk=None):
-        product = Product.objects.get(pk=pk)
-        serializer = ProductSerializer(product)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        try:
+            product = Product.objects.get(pk=product_to_remove_from_cart)
+        except Product.DoesNotExist:
+            return Response({"message": "Product not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            lineitem = OrderItem.objects.get(
+                product=product,
+                order__user=request.user,
+                order__status="Pending"
+            )
+
+        except OrderItem.DoesNotExist:
+            return Response({"message": "Product not in user's shopping cart"}, status=status.HTTP_400_BAD_REQUEST)
+
+        lineitem.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def list(self, request):
+        order = Order.objects.filter(user=request.user, status="Pending").first()
+
+        if order is None:
+            return Response({"message": "No order found"}, status=status.HTTP_404_NOT_FOUND)
+
+        serialized = CartSerializer(order.products, many=True, context={"request": request})
+        return Response(serialized.data, status=status.HTTP_200_OK)
 
     def create(self, request):
         # Get the product id from the request body
         product_id = request.data.get("product_id", None)
 
         try:
-            product = Product.objects.get(pk=product_id)
+            product = Product.objects.get(pk=product_id, stock__gt=0)
         except Product.DoesNotExist:
             return Response({"message": "Product not found"}, status=status.HTTP_404_NOT_FOUND)
 
         # Is this a new order, or is customer adding product to existing order?
         # Are there any rows in the Order table for customer with status of "Pending"
         order = Order.objects.filter(user=request.user, status="Pending").first()
+
 
         # If new order, create a new order object
         if order is None:
@@ -49,14 +70,19 @@ class CartViewSet(viewsets.ViewSet):
             serialized = CartSerializer(new_order.products, many=True)
             return Response(serialized.data, status=status.HTTP_201_CREATED)
         else:
-            lineitem = OrderItem()
-            lineitem.product = product
-            lineitem.quantity = 1
-            lineitem.order = order
-            lineitem.price_at_time = product.price
-            lineitem.save()
+            if OrderItem.objects.filter(order=order, product=product).exists():
+                lineitem = OrderItem.objects.get(order=order, product=product)
+                lineitem.quantity += 1
+                lineitem.save()
+            else:
+                lineitem = OrderItem()
+                lineitem.product = product
+                lineitem.quantity = 1
+                lineitem.order = order
+                lineitem.price_at_time = product.price
+                lineitem.save()
 
-            serialized = CartSerializer(order.products, many=True)
+            serialized = CartSerializer(order.products, many=True, context={"request": request})
             return Response(serialized.data, status=status.HTTP_201_CREATED)
 
 
@@ -71,17 +97,16 @@ class ProductCategorySerializer(serializers.ModelSerializer):
 
 class CartSerializer(serializers.ModelSerializer):
     category = ProductCategorySerializer(many=False)
+    quantity = serializers.SerializerMethodField()
 
-
-    """
-        "lineitems": [
-            {
-                "id": 1,
-                "name": "Product 1",
-            }
-        ]
-    """
+    def get_quantity(self, obj):
+        lineitem = OrderItem.objects.get(
+            order__user=self.context['request'].auth.user,
+            order__status="Pending",
+            product=obj
+        )
+        return lineitem.quantity
 
     class Meta:
         model = Product
-        fields = ('id', 'name', 'description', 'price', 'stock', 'category',)
+        fields = ('id', 'name', 'description', 'price', 'stock', 'category', 'quantity', )
